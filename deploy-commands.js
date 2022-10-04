@@ -9,8 +9,8 @@ const commands = [
 	new SlashCommandBuilder().setName('user').setDescription('Replies with user info!'),
 ].map(command => command.toJSON());
 
-const rest = new REST({ version: '10' }).setToken(process.env.BOT_TOKEN);
+const rest = new REST({ version: '10' }).setToken(BOT_TOKEN);
 
 rest.put(Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID), { body: commands })
-	.then(() => console.log('Successfully registered application commands.'))
+	.then(data => console.log(`Successfully registered ${data.length} application commands.`))
 	.catch(console.error);
