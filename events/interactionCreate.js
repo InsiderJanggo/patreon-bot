@@ -5,12 +5,15 @@ module.exports = {
 
         const { commandName } = interaction;
 
-        if (commandName === 'ping') {
-            await interaction.reply('Pong!');
-        } else if (commandName === 'server') {
-            await interaction.reply(`Server name: ${interaction.guild.name}\nTotal members: ${interaction.guild.memberCount}`);
-        } else if (commandName === 'user') {
-            await interaction.reply(`Your tag: ${interaction.user.tag}\nYour id: ${interaction.user.id}`);
+        if (commandName === 'bkl') {
+            await interaction.reply(`Welcome to ${interaction.guild.name}.`);
+        } else if (commandName === 'welcometier1') {
+            const channel = interaction.options.getChannel('channels');
+            const target = interaction.options.getUser('user');
+            await interaction.reply(`Hi ${target.username}, Welcome to ${channel}`);
+        } else if (commandName === 'greet') {
+            const target = interaction.options.getUser('user');
+            await interaction.reply(`Hello ${target.username}, Welcome to ${interaction.guild.name}.`);
         }
 	},
 };
